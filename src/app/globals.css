@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fefefe;
+  --foreground: #1a1a1a;
+
+  /* Mood Colors - Soft, Modern Palette */
+  --mood-happy: #fef3e2;
+  --mood-happy-accent: #f59e0b;
+  --mood-happy-glow: rgba(251, 191, 36, 0.3);
+
+  --mood-neutral: #f0fdf4;
+  --mood-neutral-accent: #22c55e;
+  --mood-neutral-glow: rgba(74, 222, 128, 0.3);
+
+  --mood-worried: #faf5ff;
+  --mood-worried-accent: #a855f7;
+  --mood-worried-glow: rgba(192, 132, 252, 0.3);
+
+  --mood-sad: #eff6ff;
+  --mood-sad-accent: #3b82f6;
+  --mood-sad-glow: rgba(96, 165, 250, 0.3);
+
+  --mood-angry: #fef2f2;
+  --mood-angry-accent: #ef4444;
+  --mood-angry-glow: rgba(248, 113, 113, 0.3);
+
+  /* Default (no mood selected) */
+  --mood-default: #f8fafc;
+  --mood-default-accent: #94a3b8;
+  --mood-default-glow: rgba(148, 163, 184, 0.2);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0c0c0c;
+    --foreground: #f5f5f5;
+
+    /* Mood Colors - Dark Mode (Deeper, muted) */
+    --mood-happy: #1c1a14;
+    --mood-happy-accent: #fbbf24;
+    --mood-happy-glow: rgba(251, 191, 36, 0.15);
+
+    --mood-neutral: #0f1a14;
+    --mood-neutral-accent: #4ade80;
+    --mood-neutral-glow: rgba(74, 222, 128, 0.15);
+
+    --mood-worried: #1a1520;
+    --mood-worried-accent: #c084fc;
+    --mood-worried-glow: rgba(192, 132, 252, 0.15);
+
+    --mood-sad: #101820;
+    --mood-sad-accent: #60a5fa;
+    --mood-sad-glow: rgba(96, 165, 250, 0.15);
+
+    --mood-angry: #1a1010;
+    --mood-angry-accent: #f87171;
+    --mood-angry-glow: rgba(248, 113, 113, 0.15);
+
+    --mood-default: #111111;
+    --mood-default-accent: #64748b;
+    --mood-default-glow: rgba(100, 116, 139, 0.1);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: background-color 0.5s ease;
+}
+
+/* 디스플레이 폰트 클래스 */
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+}
+
+/* Focus mode styles */
+.focus-mode {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.focus-mode.hidden-focus {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Smooth text selection */
+::selection {
+  background: var(--mood-default-accent);
+  color: white;
+}
+
+/* Writing area styles */
+.writing-area {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent calc(1.75rem - 1px),
+    #e5e7eb calc(1.75rem - 1px),
+    #e5e7eb 1.75rem
+  );
+  background-size: 100% 1.75rem;
+  line-height: 1.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .writing-area {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent calc(1.75rem - 1px),
+      #374151 calc(1.75rem - 1px),
+      #374151 1.75rem
+    );
+    background-size: 100% 1.75rem;
+  }
+}
+
+/* Mood transition animations */
+@keyframes moodPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.mood-pulse {
+  animation: moodPulse 2s ease-in-out infinite;
+}
+
+.gentle-float {
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+
+/* Glass effect utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass {
+    background: rgba(20, 20, 20, 0.8);
+  }
+}
+
+/* Soft shadow utilities */
+.shadow-soft {
+  box-shadow:
+    0 2px 8px -2px rgba(0, 0, 0, 0.05),
+    0 4px 16px -4px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .shadow-soft {
+    box-shadow:
+      0 2px 8px -2px rgba(0, 0, 0, 0.3),
+      0 4px 16px -4px rgba(0, 0, 0, 0.4);
+  }
+}
