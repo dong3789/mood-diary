@@ -60,22 +60,31 @@ export function NeutralIcon({ size = 48, ...props }: MoodIconProps) {
       {/* 얼굴 */}
       <circle cx="24" cy="24" r="20" fill="currentColor" fillOpacity="0.1" />
       <circle cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="2" />
-      {/* 눈 - 평온한 반원 */}
-      <path
-        d="M14 22C14 22 16 20 18 20C20 20 22 22 22 22"
+      {/* 눈 - 무표정 수평선 (-_-) */}
+      <line
+        x1="14"
+        y1="22"
+        x2="22"
+        y2="22"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
       />
-      <path
-        d="M26 22C26 22 28 20 30 20C32 20 34 22 34 22"
+      <line
+        x1="26"
+        y1="22"
+        x2="34"
+        y2="22"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
       />
-      {/* 입 - 살짝 미소 */}
-      <path
-        d="M19 30C19 30 21 31 24 31C27 31 29 30 29 30"
+      {/* 입 - 무표정 수평선 */}
+      <line
+        x1="19"
+        y1="31"
+        x2="29"
+        y2="31"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
